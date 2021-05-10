@@ -30,4 +30,8 @@ export default {
   border-radius: 5px;
   padding: 10px;
 }
+.meme img {
+      width: 250px;
+      height: 250px;
+  }
 </style>
