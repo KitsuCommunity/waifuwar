@@ -18,11 +18,10 @@
     min-height: 100vh !important;
     font-family: "lato", helvetica, Arial, sans-serif;
     text-align: center;
-    color: #fff;
+    color: red;
   }
     
   .title-wrapper {
-    background-color:;
     position: absolute;
     width: 1500px;
     top: 50%;
@@ -51,6 +50,8 @@
     font-size: 140pt;
     font-weight: 900;
     margin: .67em 0 !important;
+    text-align: center;
+    color: white;
   }
   
   

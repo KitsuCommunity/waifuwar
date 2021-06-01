@@ -21,7 +21,7 @@
       </b-navbar-item>
       <div class="is-hidden-desktop" tag="div">
         <div class="buttons">
-          <a v-if="!authenticated" class="button is-primary" @click="modal">
+          <a v-if="!token" class="button is-primary" @click="modal">
             Login
           </a>
           <a v-else class="button is-primary" @click="logout"> Logout </a>
@@ -39,16 +39,16 @@
         Memes
       </b-navbar-item>
       <b-navbar-item tag="router-link" :to="{ path: '/fantasyleague' }">
-        Fantasy league
+        Fantasy League
+      </b-navbar-item>
+      <b-navbar-item tag="router-link" :to="{ path: '/winners' }">
+        Previous Winners
       </b-navbar-item>
     </template>
     <template #end>
-      <b-navbar-item
-        class="is-hidden-mobile"
-        tag="div"
-      >
+      <b-navbar-item class="is-hidden-mobile" tag="div">
         <div class="buttons">
-          <a v-if="!authenticated" class="button is-primary" @click="modal">
+          <a v-if="!token" class="button is-primary" @click="modal">
             Login
           </a>
           <a v-else class="button is-primary" @click="logout"> Logout </a>
@@ -59,24 +59,24 @@
 </template>
 <script>
 export default {
-  props: ['authenticated'],
+  props: ["token"],
   data() {
     return {
       isComponentModalActive: true,
       IsLogging: false,
-      password: '',
-      email: ''
+      password: "",
+      email: "",
     };
   },
   methods: {
     modal() {
-      this.$emit('modal')
+      this.$emit("modal");
     },
     logout() {
-      localStorage.clear()
-      this.$emit('token')
-    }
-  }
+      localStorage.clear();
+      this.$emit("checktoken");
+    },
+  },
 };
 </script>
 <style scoped>
@@ -93,7 +93,7 @@ export default {
 }
 .is-hidden-desktop .buttons {
   height: 100%;
-} 
+}
 .navbar-brand > .navbar-item {
   color: #fd755c;
   background-color: var(--navbar-background-color);

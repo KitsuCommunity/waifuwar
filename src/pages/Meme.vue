@@ -1,17 +1,33 @@
 <template>
-  <div class="columns is-multiline">
-    <div v-for="meme in memes" class="column meme" :key="meme.id">
-      <img :src="'http://localhost:3000/' + meme.image" />
+  <div class="grid_meme">
+    <div
+      class="row_meme"
+      v-for="meme in memes"
+      :key="meme.id"
+      @click="(isImageModalActive = true) && (zoom = meme.image)"
+    >
+      <div class="img_container">
+        <img :src="'http://localhost:3000/' + meme.image" />
+      </div>
       <p>{{ meme.title }}</p>
     </div>
+    <b-modal v-model="isImageModalActive">
+      <p class="image">
+        <img :src="'http://localhost:3000/' + zoom" />
+      </p>
+    </b-modal>
   </div>
 </template>
+
 <script>
 import { FETCH_MEME_QUERY } from "../gql/meme";
 export default {
+  props: ["token"],
   data() {
     return {
       memes: [],
+      isImageModalActive: false,
+      zoom: null,
     };
   },
   apollo: {
@@ -21,17 +37,39 @@ export default {
         return data["meme"];
       },
     },
-  },
+  }
 };
 </script>
 <style lang="scss">
-.meme {
+.grid_meme {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+}
+.row_meme {
+  margin: 15px;
+  padding: 15px;
   background-color: var(--foreground-background-color);
   border-radius: 5px;
-  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  overflow: hidden;
+  max-height: 310px;
 }
-.meme img {
-      width: 250px;
-      height: 250px;
-  }
+.row_meme:hover {
+  background-color: var(--secondary-foreground-background-color);
+}
+.img_container {
+  height: 250px;
+  overflow: hidden;
+}
+.modal-content img {
+  height: 100%;
+  width: auto;
+  margin: auto;
+}
+.modal-content .image {
+  height: 100%;
+}
 </style>

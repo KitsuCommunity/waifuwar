@@ -87,7 +87,7 @@ export default {
           this.IncorrectLogin = '';
           this.IsLogging = false;
           this.$emit("modal");
-          this.$emit("token");
+          this.$emit("checktoken");
         })
         .catch((error) => {
           this.IsLogging = false;

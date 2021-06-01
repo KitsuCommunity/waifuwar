@@ -24,7 +24,7 @@
       >
     </p>
     <p>
-      All other trademarks and content not owned by the Waifu War that appear on
+      All other trademarks and content not owned by the Waifu Wars that appear on
       the website are the property of their respective owners
     </p>
   </footer>

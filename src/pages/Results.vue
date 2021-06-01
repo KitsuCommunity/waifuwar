@@ -32,3 +32,8 @@
     </b-tab-item>
   </b-tabs>
 </template>
+<script>
+export default {
+  props: ["token"]
+}
+</script>

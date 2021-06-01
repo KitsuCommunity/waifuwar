@@ -1,23 +1,24 @@
 <template>
-  <div id="app">
-    <Header @token="token" @modal="modal" :authenticated="authenticated" />
-    <div class="main columns">
+  <div id="app" v-bind:class="{ 'error': api_error }">
+    <error500 v-if="api_error"/>
+    <Header v-if="!api_error" @checktoken="checktoken" @modal="modal" :token="token" />
+    <div v-if="!api_error" class="main columns">
       <div
         class="column is-one-fifth is-hidden-mobile"
         :style="{
           backgroundImage: 'url(' + require('@/assets/WW-Left.png') + ')',
         }"
       ></div>
-      <router-view :authenticated="authenticated" class="column"></router-view>
-      <div
+      <router-view v-if="!api_error" :token="token" class="column"></router-view>
+      <div v-if="!api_error"
         class="column is-one-fifth is-hidden-mobile"
         :style="{
           backgroundImage: 'url(' + require('@/assets/WW-Right.png') + ')',
         }"
       ></div>
     </div>
-    <Modal @token="token" @modal="modal" :isComponentModalActive="isComponentModalActive" />
-    <Footer />
+    <Modal @checktoken="checktoken" @modal="modal" :isComponentModalActive="isComponentModalActive" />
+    <Footer v-if="!api_error" />
   </div>
 </template>
 
@@ -26,45 +27,53 @@ const axios = require("axios").default;
 import Modal from "./components/LoginModal.vue";
 import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
+import error500 from "./components/Error500.vue";
 export default {
   name: "App",
   components: {
     Footer,
     Header,
-    Modal
+    Modal,
+    error500
   },
   data() {
     return {
       isComponentModalActive: false,
-      authenticated: false,
-      userid: null
+      token: null,
+      userid: null,
+      api_error: false
     };
   },
   methods: {
     modal() {
       this.isComponentModalActive = !this.isComponentModalActive;
     },
-    token() {
+    checktoken() {
       axios({
 				method: 'get',
 				url:
 					'https://kitsu.io/api/edge/users?filter[self]=true&include=userRoles.role,userRoles.user',
 				headers: {
-					Authorization: 'Bearer ' + localStorage.getItem('token'),
-				},
+					Authorization: 'Bearer ' + localStorage.getItem('token')
+				}
 			}).then((response) => {
 				try {
           this.userid = JSON.parse(JSON.stringify(response['data'])).data[0].id;
-          this.authenticated = true;
+          this.token = localStorage.getItem('token');
 				} catch (error) {
-          this.authenticated = false;
+          this.token = null;
 					localStorage.clear();
 				}
 			});
     }
   },
   mounted() {
-    this.token()
+    fetch("http://localhost:3000", {method: "post"}).then(() => {
+      this.api_error = false
+    }).catch(() => {
+      this.api_error = true
+    });
+    this.checktoken()
   }
 };
 </script>
@@ -223,7 +232,6 @@ $navbar-item-color: #bfbfbf;
   min-height: calc(100% - 52px);
   position: absolute;
   width: 100%;
-  min-height: 100vh;
   background-color: var(--secondary-background-color);
 }
 .navbar-burger {
@@ -241,5 +249,8 @@ $navbar-item-color: #bfbfbf;
   nav a:hover {
     color: var(--background-color);
   }
+}
+.error {
+  height: 100%;
 }
 </style>

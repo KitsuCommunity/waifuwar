@@ -1,116 +1,296 @@
 <template>
   <b-tabs type="is-toggle-rounded">
     <b-tab-item label="Tier A">
-      <form class="grid">
-            <div class="grid-items">
-              <b-radio v-model="vote"
-                  name="opponents"
-                  :native-value="1">
-                  <img src="https://www.anime-planet.com/images/characters/asuka-langley-soryu-2679.jpg"/>
-                  <p>Asuka</p>
-              </b-radio>
-              <b-radio v-model="vote"
-                  name="opponents"
-                  :native-value="2">
-                  <img src="https://static.zerochan.net/Ayanami.Rei.full.697234.jpg"/>
-                  <p>Rei</p>
-              </b-radio>
-            </div>
-            <input v-if="authenticated" type="button" value="Submit your vote" @click="SubmitVote()" class="button is-primary"/>
-            <input v-else type="button" value="You need to log in" disabled class="button is-primary"/>
+      <form v-if="rounds.find((x) => x.tier === 'A')" class="grid">
+        <div class="grid-items">
+          <b-radio v-model="votes.A.id" name="opponents" :native-value="rounds.find((x) => x.tier === 'A').opp1Id.id">
+            <img
+              :src="
+                'http://localhost:3000/' +
+                  rounds.find((x) => x.tier === 'A').opp1Id.image
+              "
+            />
+            <p class="opp_name">
+              {{ rounds.find((x) => x.tier === "A").opp1Id.name }}
+            </p>
+          </b-radio>
+          <b-radio v-model="votes.A.id" :native-value="rounds.find((x) => x.tier === 'A').opp2Id.id">
+            <img
+              :src="
+                'http://localhost:3000/' +
+                  rounds.find((x) => x.tier === 'A').opp2Id.image
+              "
+            />
+            <p class="opp_name">
+              {{ rounds.find((x) => x.tier === "A").opp2Id.name }}
+            </p>
+          </b-radio>
+        </div>
+        <input
+          v-if="token && !votes.A.AlreadyVoted"
+          type="button"
+          value="Submit your vote"
+          @click="SubmitVote('A')"
+          class="button is-primary"
+        />
+        <input
+          v-else-if="token"
+          type="button"
+          value="You already voted"
+          disabled
+          class="button is-primary"
+        />
+        <input
+          v-else
+          type="button"
+          value="You need to log in"
+          disabled
+          class="button is-primary"
+        />
       </form>
+      <h1 v-else class="notournament">No tournament for today</h1>
     </b-tab-item>
     <b-tab-item label="Tier B">
-      <p>B</p>
+      <form v-if="rounds.find((x) => x.tier === 'B')" class="grid">
+        <div class="grid-items">
+          <b-radio v-model="votes.B.id" name="opponents" :native-value="rounds.find((x) => x.tier === 'B').opp1Id.id">
+            <img
+              :src="
+                'http://localhost:3000/' +
+                  rounds.find((x) => x.tier === 'B').opp1Id.image
+              "
+            />
+            <p class="opp_name">
+              {{ rounds.find((x) => x.tier === "B").opp1Id.name }}
+            </p>
+          </b-radio>
+          <b-radio v-model="votes.B.id" name="opponents" :native-value="rounds.find((x) => x.tier === 'B').opp2Id.id">
+            <img
+              :src="
+                'http://localhost:3000/' +
+                  rounds.find((x) => x.tier === 'B').opp2Id.image
+              "
+            />
+            <p class="opp_name">
+              {{ rounds.find((x) => x.tier === "B").opp2Id.name }}
+            </p>
+          </b-radio>
+        </div>
+        <input
+          v-if="token && !votes.B.AlreadyVoted"
+          type="button"
+          value="Submit your vote"
+          @click="SubmitVote('B')"
+          class="button is-primary"
+        />
+        <input
+          v-else-if="token"
+          type="button"
+          value="You already voted"
+          disabled
+          class="button is-primary"
+        />
+        <input
+          v-else
+          type="button"
+          value="You need to log in"
+          disabled
+          class="button is-primary"
+        />
+      </form>
+      <h1 v-else class="notournament">No tournament for today</h1>
     </b-tab-item>
     <b-tab-item label="Tier Meme">
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
-      <p>Meme</p>
+      <form v-if="rounds.find((x) => x.tier === 'Meme')" class="grid">
+        <div class="grid-items">
+          <b-radio v-model="votes.Meme.id" name="opponents" :native-value="rounds.find((x) => x.tier === 'Meme').opp1Id.id">
+            <img
+              :src="
+                'http://localhost:3000/' +
+                  rounds.find((x) => x.tier === 'Meme').opp1Id.image
+              "
+            />
+            <p class="opp_name">
+              {{ rounds.find((x) => x.tier === "Meme").opp1Id.name }}
+            </p>
+          </b-radio>
+          <b-radio v-model="votes.Meme.id" name="opponents" :native-value="rounds.find((x) => x.tier === 'Meme').opp2Id.id">
+            <img
+              :src="
+                'http://localhost:3000/' +
+                  rounds.find((x) => x.tier === 'Meme').opp2Id.image
+              "
+            />
+            <p class="opp_name">
+              {{ rounds.find((x) => x.tier === "Meme").opp2Id.name }}
+            </p>
+          </b-radio>
+        </div>
+        <input
+          v-if="token && !votes.Meme.AlreadyVoted"
+          type="button"
+          value="Submit your vote"
+          @click="SubmitVote('Meme')"
+          class="button is-primary"
+        />
+        <input
+          v-else-if="token"
+          type="button"
+          value="You already voted"
+          disabled
+          class="button is-primary"
+        />
+        <input
+          v-else
+          type="button"
+          value="You need to log in"
+          disabled
+          class="button is-primary"
+        />
+      </form>
+      <h1 v-else class="notournament">No tournament for today</h1>
     </b-tab-item>
   </b-tabs>
 </template>
 <script>
+import { FETCH_ROUND_QUERY } from "../gql/currentRound";
+import { FETCH_VOTE_QUERY } from '../gql/fetch_votes';
+import { VOTE_MUTATION } from '../gql/mutation_vote';
 export default {
-  props: ['authenticated'],
+  props: ["token"],
   data() {
     return {
-      vote: null
+      votes:{
+        A: {
+          AlreadyVoted: false,
+          id: null
+        },
+        B: {
+          AlreadyVoted: false,
+          id: null
+        },
+        Meme: {
+          AlreadyVoted: false,
+          id: null
+        }
+      },
+      rounds: [],
+    };
+  },
+  apollo: {
+    rounds: {
+      query: FETCH_ROUND_QUERY,
+      update(data) {
+        return data["currentRound"];
+      },
+    },
+  },
+  watch: {
+    token: async function() {
+			const votes = await this.$apollo.query({
+				query: FETCH_VOTE_QUERY,
+				fetchPolicy: 'network-only',
+				variables: {
+					token: this.token,
+				}
+			});
+      votes.data.checkVote.forEach(vote => {
+        var round = this.rounds.find((x) => x.id === vote["roundsId"])
+        this.votes[round.tier].id = vote.opponentsId
+        this.votes[round.tier].AlreadyVoted = true
+      })
+    }
+  },
+  methods: {
+    async SubmitVote(tier) {
+
+      if(this.votes[tier].id) {
+        var round = this.rounds.find((x) => x.tier === tier)
+        var ip = await fetch("https://api.db-ip.com/v2/free/self").then(res => res.json()).then(data => { return data.ipAddress })
+        this.$apollo.mutate({
+          // Query
+          mutation: VOTE_MUTATION,
+          // Parameters
+          variables: {
+            token: this.token,
+            roundid: parseInt(round.id),
+            oppid: parseInt(this.votes[tier].id),
+            ip: ip
+          }
+        })
+        .then((reponse) => {
+          this.api_response=reponse.data.submitVote
+          if(this.api_response.errors[0]&&this.api_response.errors!="_typename") {
+            this.$buefy.notification.open({
+                duration: 5000,
+                message: this.api_response.errors[0],
+                type: 'is-danger',
+            })
+          } else {
+            this.votes[tier].AlreadyVoted = true
+            this.$buefy.notification.open({
+                duration: 5000,
+                message: "Vote submitted",
+                type: 'is-success',
+            })
+            this.checkvote=true
+          }
+        })
+        .catch(() => {
+          this.$buefy.notification.open({
+              duration: 5000,
+              message: 'Something went wrong. Please refresh the page and if the error persists, contact the administrator.',
+              type: 'is-danger',
+          })
+        })
+      }
+      else {
+        this.$buefy.notification.open({
+            duration: 5000,
+            message: 'You need to select a waifu.',
+            type: 'is-danger',
+        })
+      }
     }
   }
-}
+};
 </script>
 <style scoped>
-
-form  input[type="button"] {
+form input[type="button"] {
   width: 100%;
 }
+.check {
+  grid-row: 2;
+  grid-column: 2;
+}
 .radio img {
-  max-height: 250px;
   margin: auto;
 }
 .b-radio {
-  min-width: 250px;
+  max-width: 250px;
   background-color: var(--foreground-background-color);
   border-radius: 5px;
   padding: 10px;
+  display: grid;
 }
 .b-radio:hover {
-
+  background-color: var(--secondary-foreground-background-color);
 }
-.check {
-  display: inline-block !important;
-  position: absolute !important;
-  bottom: 0px;
-  margin-left: calc(50% - 10px);
-  margin-bottom: 5px;
+.grid-items {
+  margin-bottom: 0.5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.opp_name {
+  font-size: 18px;
+  text-align: center;
+}
+.notournament {
+  font-size: 38px;
+  text-align: center;
+}
+.grid {
+  max-width: 508px;
+  margin: auto;
 }
 </style>

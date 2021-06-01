@@ -4,6 +4,7 @@ import Homepage from '@/pages/Vote'
 import Results from '@/pages/Results'
 import Memes from '@/pages/Meme'
 import FantasyLeague from '@/pages/FantasyLeague'
+import Winners from '@/pages/Winners'
 import error404 from '@/pages/Error404'
 
 Vue.use(Router)
@@ -30,6 +31,11 @@ export default new Router({
       path: '/fantasyleague',
       name: 'Fantasy League',
       component: FantasyLeague
+    },
+    {
+      path: '/winners',
+      name: 'Winners',
+      component: Winners
     },
     {
       path: '/*',
