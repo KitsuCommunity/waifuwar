@@ -35,7 +35,7 @@
           <b-message v-if="IncorrectLogin" size="is-small" type="is-danger">
             Email or password invalid
           </b-message>
-          <p>We do NOT store any of your credentials.</p>
+          <p style="color: white">We do NOT store any of your credentials.</p>
         </section>
         <footer class="modal-card-foot">
           <b-button v-if="IsLogging" class="button is-primary" loading>

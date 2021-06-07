@@ -39,9 +39,9 @@ export default {
   data() {
     return {
       isComponentModalActive: false,
-      token: null,
+      token: "",
       userid: null,
-      api_error: false
+      api_error: true
     };
   },
   methods: {
@@ -61,14 +61,14 @@ export default {
           this.userid = JSON.parse(JSON.stringify(response['data'])).data[0].id;
           this.token = localStorage.getItem('token');
 				} catch (error) {
-          this.token = null;
+          this.token = "";
 					localStorage.clear();
 				}
 			});
     }
   },
   mounted() {
-    fetch("http://localhost:3000", {method: "post"}).then(() => {
+    fetch("https://api.waifuwars.madao-king.xyz", {method: "post"}).then(() => {
       this.api_error = false
     }).catch(() => {
       this.api_error = true
@@ -140,6 +140,7 @@ body {
 }
 // Set your colors
 $primary: #fd755c;
+$table-color: var(--primary);
 $primary-invert: findColorInvert($primary);
 $twitter: #4099ff;
 $twitter-invert: findColorInvert($twitter);
@@ -147,6 +148,9 @@ $navbar-background-color: var(--navbar-color);
 $navbar-box-shadow-color: #282530;
 $text-strong: #e7dfe0;
 $navbar-burger-color: white;
+//Table
+$table-background-color: var(--navbar-color);
+// $table-cell-border: #fff;
 //Modal colors
 $modal-card-body-background-color: var(--foreground-background-color);
 $modal-card-head-background-color: var(--secondary-background-color);
@@ -219,6 +223,7 @@ $navbar-item-color: #bfbfbf;
   background-repeat: repeat-y;
 }
 .main {
+  display: grid;
   flex-grow: 1;
   color: var(--secondary-text);
 }
@@ -252,5 +257,30 @@ $navbar-item-color: #bfbfbf;
 }
 .error {
   height: 100%;
+}
+.check {
+  display: inline-block !important;
+  position: absolute !important;
+  bottom: 0px;
+  margin-left: calc(50% - 10px);
+  margin-bottom: 5px;
+}
+.control-label {
+  padding-left: 0px !important;
+}
+form input[type="radio"] {
+  display: none;
+}
+.b-radio.radio:not(.button) {
+  margin-right: 0.25em;
+}
+.b-radio.radio:not(.button) + .radio:last-child {
+  margin-left: 0.25em;
+}
+.step-title {
+    color: #fd755c;
+}
+.select select option {
+  color: white !important;
 }
 </style>

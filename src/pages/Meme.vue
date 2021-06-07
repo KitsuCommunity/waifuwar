@@ -7,13 +7,13 @@
       @click="(isImageModalActive = true) && (zoom = meme.image)"
     >
       <div class="img_container">
-        <img :src="'http://localhost:3000/' + meme.image" />
+        <img :src="'https://api.waifuwars.madao-king.xyz/' + meme.image" />
       </div>
       <p>{{ meme.title }}</p>
     </div>
     <b-modal v-model="isImageModalActive">
       <p class="image">
-        <img :src="'http://localhost:3000/' + zoom" />
+        <img :src="'https://api.waifuwars.madao-king.xyz/' + zoom" />
       </p>
     </b-modal>
   </div>

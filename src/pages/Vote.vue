@@ -3,22 +3,29 @@
     <b-tab-item label="Tier A">
       <form v-if="rounds.find((x) => x.tier === 'A')" class="grid">
         <div class="grid-items">
-          <b-radio v-model="votes.A.id" name="opponents" :native-value="rounds.find((x) => x.tier === 'A').opp1Id.id">
+          <b-radio
+            v-model="votes.A.id"
+            name="opponents"
+            :native-value="rounds.find((x) => x.tier === 'A').opp1Id.id"
+          >
             <img
               :src="
-                'http://localhost:3000/' +
-                  rounds.find((x) => x.tier === 'A').opp1Id.image
+                'https://api.waifuwars.madao-king.xyz/' +
+                rounds.find((x) => x.tier === 'A').opp1Id.image
               "
             />
             <p class="opp_name">
               {{ rounds.find((x) => x.tier === "A").opp1Id.name }}
             </p>
           </b-radio>
-          <b-radio v-model="votes.A.id" :native-value="rounds.find((x) => x.tier === 'A').opp2Id.id">
+          <b-radio
+            v-model="votes.A.id"
+            :native-value="rounds.find((x) => x.tier === 'A').opp2Id.id"
+          >
             <img
               :src="
-                'http://localhost:3000/' +
-                  rounds.find((x) => x.tier === 'A').opp2Id.image
+                'https://api.waifuwars.madao-king.xyz/' +
+                rounds.find((x) => x.tier === 'A').opp2Id.image
               "
             />
             <p class="opp_name">
@@ -53,22 +60,30 @@
     <b-tab-item label="Tier B">
       <form v-if="rounds.find((x) => x.tier === 'B')" class="grid">
         <div class="grid-items">
-          <b-radio v-model="votes.B.id" name="opponents" :native-value="rounds.find((x) => x.tier === 'B').opp1Id.id">
+          <b-radio
+            v-model="votes.B.id"
+            name="opponents"
+            :native-value="rounds.find((x) => x.tier === 'B').opp1Id.id"
+          >
             <img
               :src="
-                'http://localhost:3000/' +
-                  rounds.find((x) => x.tier === 'B').opp1Id.image
+                'https://api.waifuwars.madao-king.xyz/' +
+                rounds.find((x) => x.tier === 'B').opp1Id.image
               "
             />
             <p class="opp_name">
               {{ rounds.find((x) => x.tier === "B").opp1Id.name }}
             </p>
           </b-radio>
-          <b-radio v-model="votes.B.id" name="opponents" :native-value="rounds.find((x) => x.tier === 'B').opp2Id.id">
+          <b-radio
+            v-model="votes.B.id"
+            name="opponents"
+            :native-value="rounds.find((x) => x.tier === 'B').opp2Id.id"
+          >
             <img
               :src="
-                'http://localhost:3000/' +
-                  rounds.find((x) => x.tier === 'B').opp2Id.image
+                'https://api.waifuwars.madao-king.xyz/' +
+                rounds.find((x) => x.tier === 'B').opp2Id.image
               "
             />
             <p class="opp_name">
@@ -103,22 +118,30 @@
     <b-tab-item label="Tier Meme">
       <form v-if="rounds.find((x) => x.tier === 'Meme')" class="grid">
         <div class="grid-items">
-          <b-radio v-model="votes.Meme.id" name="opponents" :native-value="rounds.find((x) => x.tier === 'Meme').opp1Id.id">
+          <b-radio
+            v-model="votes.Meme.id"
+            name="opponents"
+            :native-value="rounds.find((x) => x.tier === 'Meme').opp1Id.id"
+          >
             <img
               :src="
-                'http://localhost:3000/' +
-                  rounds.find((x) => x.tier === 'Meme').opp1Id.image
+                'https://api.waifuwars.madao-king.xyz/' +
+                rounds.find((x) => x.tier === 'Meme').opp1Id.image
               "
             />
             <p class="opp_name">
               {{ rounds.find((x) => x.tier === "Meme").opp1Id.name }}
             </p>
           </b-radio>
-          <b-radio v-model="votes.Meme.id" name="opponents" :native-value="rounds.find((x) => x.tier === 'Meme').opp2Id.id">
+          <b-radio
+            v-model="votes.Meme.id"
+            name="opponents"
+            :native-value="rounds.find((x) => x.tier === 'Meme').opp2Id.id"
+          >
             <img
               :src="
-                'http://localhost:3000/' +
-                  rounds.find((x) => x.tier === 'Meme').opp2Id.image
+                'https://api.waifuwars.madao-king.xyz/' +
+                rounds.find((x) => x.tier === 'Meme').opp2Id.image
               "
             />
             <p class="opp_name">
@@ -187,6 +210,14 @@ export default {
   },
   watch: {
     token: async function() {
+      this.check_votes()
+    }
+  },
+  mounted() {
+      this.check_votes()
+  },
+  methods: {
+    async check_votes() {
 			const votes = await this.$apollo.query({
 				query: FETCH_VOTE_QUERY,
 				fetchPolicy: 'network-only',
@@ -199,9 +230,7 @@ export default {
         this.votes[round.tier].id = vote.opponentsId
         this.votes[round.tier].AlreadyVoted = true
       })
-    }
-  },
-  methods: {
+    },
     async SubmitVote(tier) {
 
       if(this.votes[tier].id) {
@@ -259,10 +288,6 @@ export default {
 form input[type="button"] {
   width: 100%;
 }
-.check {
-  grid-row: 2;
-  grid-column: 2;
-}
 .radio img {
   margin: auto;
 }
@@ -284,13 +309,14 @@ form input[type="button"] {
 .opp_name {
   font-size: 18px;
   text-align: center;
+  margin-bottom: 25px;
 }
 .notournament {
   font-size: 38px;
   text-align: center;
 }
 .grid {
-  max-width: 508px;
+  max-width: 518px;
   margin: auto;
 }
 </style>

@@ -4,7 +4,7 @@
       <h3 class="error-subtitle">IT LOOKS LIKE SOMETHING <br id="break">WENT WRONG...OUR BAD</h3>
       <div class="text-wrapper">
         <p class="error-text">People are imperfect and apparently so are our servers, we apologise for the downtime.</p>
-        <p class="error-text">In the in the meantime, maybe try <strong>refreshing your browser</strong> or if that doesn't work, watch all episodes of One Piece and <strong>try again later.</strong></p>
+        <p class="error-text">In the meantime, maybe try <strong>refreshing your browser</strong> or if that doesn't work, watch all episodes of One Piece and <strong>try again later.</strong></p>
       </div>
     </div>
 </template>
@@ -18,7 +18,6 @@
     min-height: 100vh !important;
     font-family: "lato", helvetica, Arial, sans-serif;
     text-align: center;
-    color: red;
   }
     
   .title-wrapper {
