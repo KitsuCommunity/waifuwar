@@ -41,7 +41,7 @@ export default {
       isComponentModalActive: false,
       token: "",
       userid: null,
-      api_error: true
+      api_error: false
     };
   },
   methods: {
