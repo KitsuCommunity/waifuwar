@@ -21,7 +21,7 @@
 
         <b-table-column field="name" label="Name" v-slot="props">
           <p>
-            {{ props.row.name }}<b>{{ isWaifu([props.row.id]) }}</b>
+            {{ props.row.name }}<b style="color: #fd755c">{{ isWaifu([props.row.id]) }}</b>
           </p>
         </b-table-column>
 

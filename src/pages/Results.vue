@@ -37,3 +37,14 @@ export default {
   props: ["token"]
 }
 </script>
+<style scoped>
+.column {
+  padding: 0px !important;
+}
+.b-tabs {
+  margin-top: 15px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+</style>

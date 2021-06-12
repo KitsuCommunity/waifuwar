@@ -288,7 +288,13 @@ form input[type="radio"] {
 }
 .b-tabs .tab-content {
   padding-top: 1rem;
+  padding-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;
+  margin: 0px !important;
+}
+
+.b-tabs:not(:last-child) {
+    margin-bottom: 0px !important;
 }
 </style>
