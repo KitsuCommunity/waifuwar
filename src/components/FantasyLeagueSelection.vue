@@ -217,11 +217,21 @@ export default {
 .b-radio:hover {
   background-color: var(--secondary-foreground-background-color);
 }
-.grid-items {
-  margin-bottom: 0.5em;
-  grid-template-columns: repeat(auto-fit, 250px);
-  display: grid;
-  justify-content: center;
+@media (max-width: 1024px) {
+  .grid-items {
+    margin-bottom: 0.5em;
+    grid-template-columns: repeat(auto-fit, 160px);
+    display: grid;
+    justify-content: center;
+  }
+}
+@media (min-width: 1024px) {
+  .grid-items {
+    margin-bottom: 0.5em;
+    grid-template-columns: repeat(auto-fit, 250px);
+    display: grid;
+    justify-content: center;
+  }
 }
 .opp_name {
   font-size: 18px;

@@ -283,4 +283,12 @@ form input[type="radio"] {
 .select select option {
   color: white !important;
 }
+.step-content {
+  padding: 0rem !important;
+}
+.b-tabs .tab-content {
+  padding-top: 1rem;
+  padding-left: 0px;
+  padding-right: 0px;
+}
 </style>

@@ -225,11 +225,13 @@ export default {
 					token: this.token,
 				}
 			});
-      votes.data.checkVote.forEach(vote => {
-        var round = this.rounds.find((x) => x.id === vote["roundsId"])
-        this.votes[round.tier].id = vote.opponentsId
-        this.votes[round.tier].AlreadyVoted = true
-      })
+      if(votes.data.checkVote != null) {
+        votes.data.checkVote.forEach(vote => {
+          var round = this.rounds.find((x) => x.id === vote["roundsId"])
+          this.votes[round.tier].id = vote.opponentsId
+          this.votes[round.tier].AlreadyVoted = true
+        })
+      }
     },
     async SubmitVote(tier) {
 
@@ -288,6 +290,9 @@ export default {
 form input[type="button"] {
   width: 100%;
 }
+.b-tabs {
+  margin: 0px;
+}
 .radio img {
   margin: auto;
 }
@@ -319,4 +324,5 @@ form input[type="button"] {
   max-width: 518px;
   margin: auto;
 }
+
 </style>

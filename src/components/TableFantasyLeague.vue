@@ -79,20 +79,22 @@ export default {
       }
     },
     isWaifu: function (id) {
-      if (this.selection.bestWaifuId == id) {
-        return " is your Best Waifu";
-      } else if(this.selection.bestMemeId == id) {
-        return " is your Best Meme";
-      } else if(this.selection.waifu1Id == id || this.selection.waifu2Id == id || this.selection.waifu3Id == id || this.selection.waifu4Id == id || this.selection.waifu5Id == id || this.selection.waifu6Id == id || this.selection.waifu7Id == id || this.selection.waifu8Id == id || this.selection.waifu9Id == id) {
-        return " is one of your waifus";
-      } else if(this.selection.meme1Id == id || this.selection.meme2Id == id || this.selection.meme3Id == id || this.selection.meme4Id == id || this.selection.meme5Id == id || this.selection.meme6Id == id || this.selection.meme7Id == id || this.selection.meme8Id == id || this.selection.meme9Id == id) {
-        return " is one of your memes";
+      if (this.selection) { 
+        if (this.selection.bestWaifuId == id) {
+          return " is your Best Waifu";
+        } else if(this.selection.bestMemeId == id) {
+          return " is your Best Meme";
+        } else if(this.selection.waifu1Id == id || this.selection.waifu2Id == id || this.selection.waifu3Id == id || this.selection.waifu4Id == id || this.selection.waifu5Id == id || this.selection.waifu6Id == id || this.selection.waifu7Id == id || this.selection.waifu8Id == id || this.selection.waifu9Id == id) {
+          return " is one of your waifus";
+        } else if(this.selection.meme1Id == id || this.selection.meme2Id == id || this.selection.meme3Id == id || this.selection.meme4Id == id || this.selection.meme5Id == id || this.selection.meme6Id == id || this.selection.meme7Id == id || this.selection.meme8Id == id || this.selection.meme9Id == id) {
+          return " is one of your memes";
+        }
+        else {
+          return null;
+        }
       }
-      else {
-        return null;
-      }
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
