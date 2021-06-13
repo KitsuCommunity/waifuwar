@@ -17,7 +17,9 @@
               :native-value="waifu"
               :key="waifu.id"
             >
-              <img :src="'https://api.waifuwars.madao-king.xyz/' + waifu.image" />
+              <img
+                :src="'https://api.waifuwars.madao-king.xyz/' + waifu.image"
+              />
               <p class="opp_name">{{ waifu.name }}</p>
             </b-checkbox>
           </div>
@@ -44,7 +46,9 @@
               :native-value="waifu.id"
               :key="waifu.id"
             >
-              <img :src="'https://api.waifuwars.madao-king.xyz/' + waifu.image" />
+              <img
+                :src="'https://api.waifuwars.madao-king.xyz/' + waifu.image"
+              />
               <p class="opp_name">{{ waifu.name }}</p>
             </b-radio>
           </div>
@@ -71,7 +75,9 @@
               :native-value="meme"
               :key="meme.id"
             >
-              <img :src="'https://api.waifuwars.madao-king.xyz/' + meme.image" />
+              <img
+                :src="'https://api.waifuwars.madao-king.xyz/' + meme.image"
+              />
               <p class="opp_name">{{ meme.name }}</p>
             </b-checkbox>
           </div>
@@ -98,7 +104,9 @@
               :native-value="meme.id"
               :key="meme.id"
             >
-              <img :src="'https://api.waifuwars.madao-king.xyz/' + meme.image" />
+              <img
+                :src="'https://api.waifuwars.madao-king.xyz/' + meme.image"
+              />
               <p class="opp_name">{{ meme.name }}</p>
             </b-radio>
           </div>
@@ -121,7 +129,7 @@
 import { FETCH_FANTASYLEAGUE_QUERY } from "../gql/fetch_fantasyleague";
 import { SUBMIT_FANTASYLEAGUE } from "../gql/submit_fantasyleague";
 export default {
-  props: ['token'],
+  props: ["token"],
   data() {
     return {
       activeStep: 0,
@@ -164,7 +172,7 @@ export default {
             waifus: clone_waifus,
             best_waifu: this.best_waifu,
             memes: clone_memes,
-            best_meme: this.best_meme
+            best_meme: this.best_meme,
           },
         })
         .then((reponse) => {
@@ -184,7 +192,7 @@ export default {
               message: "Vote submitted",
               type: "is-success",
             });
-            this.$emit('checkFantasyleague')
+            this.$emit("checkFantasyleague");
           }
         })
         .catch(() => {
@@ -249,5 +257,12 @@ export default {
 .instructions {
   text-align: center;
   font-size: 28px;
+}
+.b-checkbox.checkbox:not(.button) + .checkbox:last-child {
+  margin-right: 0.5em;
+}
+.b-radio.radio:not(.button) + .radio:last-child {
+    margin-left: 0px;
+    margin-right: 0.25em;
 }
 </style>

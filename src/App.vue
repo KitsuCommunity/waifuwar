@@ -262,7 +262,7 @@ $navbar-item-color: #bfbfbf;
   display: inline-block !important;
   position: absolute !important;
   bottom: 0px;
-  margin-left: calc(50% - 10px);
+  margin-left: calc(50% - 20px);
   margin-bottom: 5px;
 }
 .control-label {
