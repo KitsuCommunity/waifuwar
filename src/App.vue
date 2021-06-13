@@ -293,7 +293,4 @@ form input[type="radio"] {
   padding-right: 0px;
   margin: 0px !important;
 }
-.b-tabs:not(:last-child) {
-    margin-bottom: 0px !important;
-}
 </style>
