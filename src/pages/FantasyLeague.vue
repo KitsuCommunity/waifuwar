@@ -38,7 +38,7 @@ export default {
 					token: this.token,
 				}
 			});
-      if(data.data.checkVoteFantasyleague != null) {
+      if(data.data.checkVoteFantasyleague != null && data.data.checkVoteFantasyleague != "") {
         this.selection = data.data.checkVoteFantasyleague[0]
       }
     }
