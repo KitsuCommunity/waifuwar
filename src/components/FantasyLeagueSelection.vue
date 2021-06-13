@@ -210,7 +210,7 @@ export default {
   background-color: var(--foreground-background-color);
   border-radius: 5px;
   padding: 10px;
-  display: grid;
+  display: block;
   margin: 0.25em;
 }
 .b-checkbox:hover,
