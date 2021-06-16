@@ -301,7 +301,7 @@ form input[type="button"] {
   background-color: var(--foreground-background-color);
   border-radius: 5px;
   padding: 10px;
-  display: grid;
+  display: block;
 }
 .b-radio:hover {
   background-color: var(--secondary-foreground-background-color);
