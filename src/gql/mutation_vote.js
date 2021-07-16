@@ -5,7 +5,7 @@ mutation submitVote($token: String!, $oppid: Int!, $ip: String!, $roundid: Int!)
     input: {
       token: $token
       oppId: $oppid
-      ip: ip
+      ip: $ip
       roundId: $roundid
     }
   )
