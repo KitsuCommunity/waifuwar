@@ -237,7 +237,7 @@ export default {
 
       if(this.votes[tier].id) {
         var round = this.rounds.find((x) => x.tier === tier)
-        //var ip = await fetch("https://api.db-ip.com/v2/free/self").then(res => res.json()).then(data => { return data.ipAddress })
+        var ip = await fetch("https://ident.me/").then( res => { return res.text() })
         this.$apollo.mutate({
           // Query
           mutation: VOTE_MUTATION,
@@ -246,7 +246,7 @@ export default {
             token: this.token,
             roundid: parseInt(round.id),
             oppid: parseInt(this.votes[tier].id),
-            //ip: ip
+            ip: ip
           }
         })
         .then((reponse) => {
