@@ -275,7 +275,7 @@ form input[type="radio"] {
   margin-right: 0.25em;
 }
 .b-radio.radio:not(.button) + .radio:last-child {
-  margin-left: 0.25em;
+  margin-left: 0.5em;
 }
 .step-title {
     color: #fd755c;
