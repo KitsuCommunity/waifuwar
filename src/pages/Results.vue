@@ -2,7 +2,7 @@
   <b-tabs type="is-toggle-rounded">
     <b-tab-item label="Tier A">
       <iframe
-        src="https://challonge.com/fr/9rpx6apb/module"
+        src="https://challonge.com/en/6oaq7bkv/module"
         width="100%"
         height="500"
         frameborder="0"
@@ -12,7 +12,7 @@
     </b-tab-item>
     <b-tab-item label="Tier B">
       <iframe
-        src="https://challonge.com/fr/l2t2pcis/module"
+        src="https://challonge.com/en/bj4lpoi/module"
         width="100%"
         height="500"
         frameborder="0"
@@ -22,7 +22,7 @@
     </b-tab-item>
     <b-tab-item label="Tier Meme">
       <iframe
-        src="https://challonge.com/fr/vtk71ro4/module"
+        src="https://challonge.com/en/8vjsy6wl/module"
         width="100%"
         height="500"
         frameborder="0"
