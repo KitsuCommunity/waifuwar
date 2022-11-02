@@ -237,7 +237,7 @@ export default {
 
       if(this.votes[tier].id) {
         var round = this.rounds.find((x) => x.tier === tier)
-        var ip = await fetch("https://ident.me/").then( res => { return res.text() })
+        var ip = await fetch("https://v4.ident.me/").then( res => { return res.text() })
         this.$apollo.mutate({
           // Query
           mutation: VOTE_MUTATION,
