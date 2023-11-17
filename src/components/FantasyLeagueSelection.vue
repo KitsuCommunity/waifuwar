@@ -7,7 +7,7 @@
       :mobile-mode="null"
     >
       <b-step-item label="Waifus">
-        <p class="instructions">Select 10 waifus</p>
+        <p class="instructions">Select 10 waifus and husbandos</p>
         <form class="grid">
           <div class="grid-items">
             <b-checkbox
@@ -32,11 +32,11 @@
           Next step
         </b-button>
         <b-button v-else class="is-primary fantasy-btn" disabled>
-          Choose 10 waifus (you picked {{ waifus.length }})
+          Choose 10 waifus and husbandos (you picked {{ waifus.length }})
         </b-button>
       </b-step-item>
       <b-step-item label="Best waifu">
-        <p class="instructions">Select your best waifu</p>
+        <p class="instructions">Select your best waifu or husbando</p>
         <form class="grid">
           <div class="grid-items">
             <b-radio
