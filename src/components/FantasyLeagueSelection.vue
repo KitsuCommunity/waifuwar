@@ -61,7 +61,7 @@
           Next step
         </b-button>
         <b-button v-else class="is-primary fantasy-btn" disabled>
-          Choose your best waifu
+          Choose your best waifu or husbando
         </b-button>
       </b-step-item>
       <b-step-item label="Memes">
